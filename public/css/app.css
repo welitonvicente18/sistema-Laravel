@@ -1,0 +1,45 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(243 244 246 / 1) !important;
+}
+
+#app {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#navBar {
+    background-color: #FFF;
+    flex: 1 100vw;
+    height: 7vh;
+    border-bottom: #f0ebeb;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+#aside {
+    background-color: #FFF;
+    flex: 1 10vw;
+    height: 100vh;
+}
+
+#conteudo {
+    flex: 20;
+}
+
+#footer {
+    flex: 1;
+    height: 50px;
+    flex: 1 100vw;
+}
+
+.mycard {
+    background-color: #FFF;
+    border-radius: 5px;
+    padding: 20px;
+}
