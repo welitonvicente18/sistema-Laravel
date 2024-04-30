@@ -7,6 +7,8 @@
     <title>@yield('title')</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link href="/css/app.css" rel="stylesheet">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -18,16 +20,22 @@
             <!-- @extends('admin.layout.navbar') -->
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Active</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="{{route('profile.edit')}}">{{Auth::user()->name}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <!-- Authentication -->
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a href="route('logout')" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                            Sair
+                        </a>
+                    </form>
                 </li>
             </ul>
         </nav>
@@ -38,13 +46,13 @@
                     <a class="" href="{{route('dashboard')}}">Dashboard</a>
                 </li>
                 <li class="">
-                    <a class="" href="{{route('profile.edit')}}">Usuários</a>
+                    <a class="" href="{{route('register.index')}}">Usuários</a>
                 </li>
                 <li class="">
                     <a class="" href="{{route('aluno.index')}}">Alunos</a>
                 </li>
                 <li class="">
-                    <a class=" disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <a class=" disabled" href="{{ route('responsavel.index')}}">Responsável</a>
                 </li>
             </ul>
         </aside>

@@ -49,7 +49,7 @@ class AlunoController extends Controller
         $aluno->email = $request->email;
         $aluno->save();
 
-        redirect()->route('aluno.index');
+        return redirect()->route('aluno.index');
     }
 
     /**
@@ -71,7 +71,9 @@ class AlunoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $modal = new Aluno();
+        $aluno = $modal->find($id);
+        return view('admin/aluno/create', ['aluno' => $aluno]);
     }
 
     /**
@@ -83,7 +85,22 @@ class AlunoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $modal = new Aluno();
+        $aluno = $modal->where('id', $id)->update(
+            [
+                'nome' => $request->nome,
+                'cpf' => $request->cpf,
+                'dt_nascimento' => $request->dt_nascimento,
+                'sexo' => $request->sexo,
+                'matricula' => $request->matricula,
+                'responsavel' => $request->responsavel,
+                'turma' => $request->turma,
+                'turno' => $request->turno,
+                'telefone' => $request->telefone,
+                'email' => $request->email
+            ]
+        );
+        return redirect()->route('aluno.index');
     }
 
     /**
@@ -94,6 +111,9 @@ class AlunoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $modal = new Aluno();
+        $aluno = $modal->find($id);
+        $aluno->delete();
+        return redirect()->route('aluno.index')->with('msg', 'Registro excluido com sucesso!');
     }
 }

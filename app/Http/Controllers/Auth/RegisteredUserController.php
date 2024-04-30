@@ -18,9 +18,16 @@ class RegisteredUserController extends Controller
     /**
      * Display the registration view.
      */
+    public function index(): View
+    {
+        return view('admin/usuario/index', ['users' => User::all()]);
+    }
+    /**
+     * Display the registration view.
+     */
     public function create(): View
     {
-        return view('auth.register');
+        return view('admin/usuario/create');
     }
 
     /**
@@ -30,11 +37,11 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+        // $request->validate([
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+        //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        // ]);
 
         $user = User::create([
             'name' => $request->name,
@@ -42,9 +49,10 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        event(new Registered($user));
 
-        Auth::login($user);
+        // event(new Registered($user));
+
+        // Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
     }
