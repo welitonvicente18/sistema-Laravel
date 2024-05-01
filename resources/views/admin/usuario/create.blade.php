@@ -1,15 +1,18 @@
 @extends('admin.layout.app')
 
+@section('section') @if(isset($uses)) <span class="text-success">Editar</span> {{$uses->name}} @else Novo Responsável/Aluno(a) @endif @endsection
+
+<!-- <h1></h1> -->
+
 @section('content')
 
-<h1>@if(isset($uses))Editar @else Novo Usuário(a) @endif</h1>
 
 <div class="container-fluid">
     <div class="row  mycard shadow-sm">
 
         <div class="row">
             <div class="col-12">
-                <h5>@if(isset($uses)) Editar do Usuário @else Cadastro do Usuário @endif</h5>
+                <h5>@if(isset($uses)) Editar do Responsável/Aluno @else Responsável/Aluno @endif</h5>
                 <span class="opacity-75">Mussum Ipsum, cacilds vidis litro abertis. Mauris nec dolor in eros commodo tempor.</span>
             </div>
         </div>
@@ -42,7 +45,6 @@
                                 <option value="" @if(isset($uses) && $uses->sexo == '' )selected @endif>Escolha...</option>
                                 <option value="M" @if(isset($uses) && $uses->sexo == 'M')selected @endif >Masculino</option>
                                 <option value="F" @if(isset($uses) && $uses->sexo == 'F')selected @endif>Feminino</option>
-
                             </select>
                         </div>
                     </div>
@@ -59,8 +61,20 @@
                     </div>
 
                     <hr class="my-4">
+                    
+                    <div class="col-12">
+                        <h5>Dados de acesso</h5>
+                        <span class="opacity-75">Mussum Ipsum, cacilds vidis litro abertis. Mauris nec dolor in eros commodo tempor.</span>
+                    </div>
 
-                    <div class="row">
+                    <div class="row mt-3">
+                        <div class="col-3">
+                            <label for="" class="form-label">Tipo de Usuário</label>
+                            <select class="form-select" name="perfil" aria-label="Default select example">
+                                <option value="1" @if(isset($uses) && $uses->perfil == '1')selected @endif >Usuário</option>
+                                <option value="2" @if(isset($uses) && $uses->perfil == '2')selected @endif>Administrador</option>
+                            </select>
+                        </div>
                         <div class="col-3">
                             <label for="" class="form-label">Usuário</label>
                             <input type="text" name="user" value="{{$uses->user ?? ''}}" class="form-control" />
@@ -87,7 +101,7 @@
                             </button>
 
                             <div class="modal fade" id="modalResponsavel" tabindex="-1" aria-labelledby="modalResponsavelLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-dialog modal-xl">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h4 class="modal-title" id="modalResponsavelLabel">
@@ -97,11 +111,41 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <iframe src="{{ route('responsavel.create') }}"></iframe>
+                                            @include('admin.responsavel.form')
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                            <button type="button" class="btn btn-primary">Salvar</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr class="my-4">
+
+                    <div class="row">
+
+                        <div class="col-12">
+                            <h5>Adicionar Aluno</h5>
+                            <span class="opacity-75">Mussum Ipsum, cacilds vidis litro abertis. Mauris nec dolor in eros commodo tempor.</span>
+                        </div>
+
+                        <div class="col-3 mt-3">
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalResponsavel">
+                                <i class="bi bi-person-plus-fill fa-2x"></i>
+                                Adicionar
+                            </button>
+
+                            <div class="modal fade" id="modalResponsavel" tabindex="-1" aria-labelledby="modalResponsavelLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="modalResponsavelLabel">
+                                                <i class="bi bi-person-plus-fill fa-2x"></i>
+                                                Adicionar Aluno
+                                            </h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            @include('admin.responsavel.form')
                                         </div>
                                     </div>
                                 </div>

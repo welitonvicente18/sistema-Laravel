@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@yield('title')</title>
+    <title>Sistema - WCode</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -16,53 +16,37 @@
 <body>
     <div id="app">
 
-        <nav id="navBar" class="shadow-sm">
-            <!-- @extends('admin.layout.navbar') -->
-            <ul class="nav">
-                <li class="nav-item">
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('profile.edit')}}">{{Auth::user()->name}}</a>
-                </li>
-                <li class="nav-item">
-                    <!-- Authentication -->
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <a href="route('logout')" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                            Sair
-                        </a>
-                    </form>
-                </li>
-            </ul>
-        </nav>
+        @include('admin.layout.aside')
 
-        <aside id="aside" class="shadow-sm">
-            <ul class="">
-                <li class="">
-                    <a class="" href="{{route('dashboard')}}">Dashboard</a>
-                </li>
-                <li class="">
-                    <a class="" href="{{route('register.index')}}">Usuários</a>
-                </li>
-                <li class="">
-                    <a class="" href="{{route('aluno.index')}}">Alunos</a>
-                </li>
-                <li class="">
-                    <a class=" disabled" href="{{ route('responsavel.index')}}">Responsável</a>
-                </li>
-            </ul>
-        </aside>
+        <div id="main">
 
-        <main id="conteudo" class="p-3">
-            @yield('content')
-        </main>
+            @include('admin.layout.navbar')
+
+            <main id="conteudo" class="py-3">
+
+                <section class="row">
+                    <h2>@yield('section')</h2>
+                </section>
+
+                <hr class="mt-1">
+
+                <div class="row mt-4">
+                    <div class="col-12">
+                        @yield('button')
+                    </div>
+                </div>
+
+                @if (session('msg'))
+                <div class="alert alert-success">
+                    {{ session('msg') }}
+                </div>
+                @endif
+
+                @yield('content')
+            </main>
+        </div>
 
         <footer id="footer">
-            @yield('footer')
         </footer>
     </div>
 </body>

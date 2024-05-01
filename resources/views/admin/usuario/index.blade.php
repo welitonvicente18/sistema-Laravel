@@ -1,38 +1,29 @@
 @extends('admin.layout.app')
 
+@section('section') Responsável/Aluno @endsection
+
+@section('button')
+<a class="btn btn-primary" href="{{ route('profile.create') }}"> <i class="bi bi-people-fill"></i> Novo Responsável/Aluno</a>
+@endsection
+
 @section('content')
-
-<h1>Usuário</h1>
-
-<div class="container-fluid">
-    <div class="col-12">
-        <a class="btn btn-primary" href="{{ route('responsavel.create') }}">Novo Usuário</a>
-    </div>
-</div>
-
-@if (session('msg'))
-<div class="alert alert-success">
-    {{ session('msg') }}
-</div>
-@endif
-
-<table class="table table-light table-striped table-hover table-bordered table-sm table-responsive-sm mt-5">
+<table class="table table-light table-striped table-hover table-bordered table-responsive mt-3">
     <thead>
         <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">E-mail</th>
-            <th scope="col">Telefone</th>
-            <th scope="col">Ações</th>
+            <th scope="col" class="col-">Nome</th>
+            <th scope="col" class="col-2 text-center">E-mail</th>
+            <th scope="col" class="col-2 text-center">Telefone</th>
+            <th scope="col" class="col-2 text-center">Ações</th>
         </tr>
     </thead>
     <tbody>
         @foreach($users as $user )
         <tr>
             <td>{{$user->name}}</td>
-            <td>{{$user->email}}</td>
-            <td></td>
-            <td>
-                <a class="btn btn-primary" href="{{ route('profile.edit', $user->id) }}">
+            <td class="text-center">{{$user->email}}</td>
+            <td class="text-center"></td>
+            <td class="justify-content-around d-flex text-center">
+                <a href="{{ route('profile.edit', $user->id) }}">
                     <button type="submit" class="btn btn-sm btn-primary ">
                         <i class="bi bi-pencil-square fa-x"></i>
                         Editar

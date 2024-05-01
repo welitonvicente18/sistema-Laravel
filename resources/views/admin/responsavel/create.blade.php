@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="row">
-            @yield('formulario')
+            @include('admin.responsavel.form')
         </div>
     </div>
 </div>
