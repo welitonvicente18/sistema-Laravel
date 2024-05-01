@@ -13,19 +13,45 @@ body {
     flex-wrap: wrap;
 }
 
+#main {
+    flex: 1 80vw;
+    padding: 5px 20px 5px 20px;
+}
+
 #navBar {
     background-color: #FFF;
-    flex: 1 100vw;
     height: 7vh;
     border-bottom: #f0ebeb;
     border-bottom-style: solid;
     border-bottom-width: 1px;
+    border-radius: 5px;
 }
 
 #aside {
     background-color: #FFF;
     flex: 1 10vw;
-    height: 100vh;
+    height: 100vmin !important;
+}
+
+#aside ul {
+    padding: 00px;
+}
+
+#aside ul li {
+    list-style: none;
+    padding: 10px 10px 10px 15px;
+    margin-top: 10px;
+}
+
+#aside ul li:hover {
+    background-color: aliceblue;
+    border-right: #5cabf0;
+    border-right-style: solid;
+    border-right-width: 5px;
+}
+
+#aside ul li a {
+    text-decoration: none;
 }
 
 #conteudo {
@@ -42,4 +68,53 @@ body {
     background-color: #FFF;
     border-radius: 5px;
     padding: 20px;
+}
+
+#logo {
+    text-align: center;
+}
+
+#logo img {
+    width: 120px;
+    text-align: center;
+}
+
+#navBar {
+    text-decoration: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#navBar img {
+    margin: 0px 0px 0px 3%
+}
+
+#navBar {
+    text-decoration: none;
+    justify-content: end;
+}
+
+#navBar ul {
+    text-decoration: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 7px;
+}
+
+#navBar ul li a {
+    text-decoration: none;
+}
+
+#navBar ul li {
+    list-style: none;
+    padding: 10px 10px 10px 15px;
+    margin-top: 10px;
+}
+
+#navBar ul li:hover {
+    background-color: aliceblue;
+    border-bottom: #5cabf0;
+    border-bottom-style: solid;
+    border-bottom-width: 5px;
 }

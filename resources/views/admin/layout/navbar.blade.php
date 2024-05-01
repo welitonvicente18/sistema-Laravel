@@ -1,15 +1,20 @@
+<nav id="navBar"class="shadow-sm">
 
-<ul class="nav">
-    <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Active</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-    </li>
-</ul>
+    <ul>
+        <li>
+            <a href="{{route('profile.edit')}}">
+                <i class="bi bi-person-fill"></i>{{ Auth::user()->name }}
+            </a>
+        </li>
+        <li>
+            <!-- Authentication -->
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <a href="route('logout')" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                    <i class="bi bi-box-arrow-right"></i>Sair
+                </a>
+            </form>
+        </li>
+    </ul>
+</nav>
