@@ -6,6 +6,7 @@
 
 body {
     background-color: rgb(243 244 246 / 1) !important;
+    font-family: 'Nunito', sans-serif;
 }
 
 #app {
@@ -66,8 +67,8 @@ body {
 
 .mycard {
     background-color: #FFF;
-    border-radius: 5px;
-    padding: 20px;
+    border-radius: 6px;
+    padding: 12px;
 }
 
 #logo {
@@ -117,4 +118,12 @@ body {
     border-bottom: #5cabf0;
     border-bottom-style: solid;
     border-bottom-width: 5px;
+}
+
+
+.text-laranja {
+    color: #ED6226
+}
+.text-laranja-2 {
+    color: #EDA426
 }

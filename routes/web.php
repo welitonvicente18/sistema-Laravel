@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\ResponsavelController;
 use Illuminate\Support\Facades\Route;
@@ -28,11 +29,12 @@ Route::get('/dashboard', function () {
  * Módulo Profile
  */
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
-    Route::get('/profile/novo', [ProfileController::class, 'create'])->name('profile.create');
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::put('/profile/{$id}', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/user', [UserController::class, 'index'])->name('user.index');
+    Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
+    Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('/user/{id}', [UserController::class, 'update'])->name('user.update');
+    Route::post('/user', [UserController::class, 'store'])->name('user.store');
+    Route::delete('/user/{id}/delete', [UserController::class, 'destroy'])->name('user.destroy');
 });
 
 // Route::prefix('aluno')->group(function () {
@@ -42,11 +44,11 @@ Route::middleware('auth')->group(function () {
  * Módulo Aluno
  */
 Route::get('/aluno', [AlunoController::class, 'index'])->name('aluno.index');
-Route::get('/novoaluno', [AlunoController::class, 'create'])->name('aluno.create');
-Route::post('/alunosalvar', [AlunoController::class, 'store'])->name('aluno.store');
-Route::get('/aluno/{id}', [AlunoController::class, 'edit'])->name('aluno.edit');
+Route::get('/aluno/create', [AlunoController::class, 'create'])->name('aluno.create');
+Route::post('/aluno', [AlunoController::class, 'store'])->name('aluno.store');
+Route::get('/aluno/{id}/edit', [AlunoController::class, 'edit'])->name('aluno.edit');
 Route::put('/aluno/{id}', [AlunoController::class, 'update'])->name('aluno.update');
-Route::delete('/eluno/delete/{id}', [AlunoController::class, 'destroy'])->name('aluno.destroy');
+Route::delete('/eluno/{id}/delete', [AlunoController::class, 'destroy'])->name('aluno.destroy');
 
 /**
  * Módulo Responsavel

@@ -17,6 +17,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@alpinejs/mask": "^3.13.10",
         "@popperjs/core": "^2.11.8",
         "bootstrap": "^5.3.3",
         "bootstrap-icons": "^1.11.3"
