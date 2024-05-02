@@ -2,7 +2,46 @@ const inserir = document.querySelector('#inserir');
 
 inserir.addEventListener('click', setResponsavel);
 
+const idenficador = Math.floor(Math.random() * (1 + 99) + 10);
+
 function setResponsavel() {
+
+    const formResponsavel = document.querySelector("#form-responsavel")
+    const CloneFormResponsavel = formResponsavel.cloneNode(true)
+    CloneFormResponsavel.classList.add('form-responsavel-' + idenficador);
+    const hr = document.createElement('hr')
+    hr.setAttribute('class', 'row mt-2')
+
+    const h5 = document.createElement('h5');
+    h5.classList.add('text-laranja')
+    h5.innerText = 'Responsável';
+
+    const titulo = document.createElement('div');
+    titulo.setAttribute('class', 'col-12 mt-2')
+    titulo.appendChild(h5);
+
+    // const excluir = document.createElement('div');
+    // excluir.setAttribute('class', 'col-3');
+
+    const spanExcluir = document.createElement('span');
+    const divExcluir = CloneFormResponsavel.querySelector('#exluir');
+    spanExcluir.innerHTML = '<i class="bi bi-x-octagon text-danger" style="font-size: 2em;cursor:pointer" onClick="excluirResponsavel(' + idenficador + ')"><span class="text-danger" style="font-size: 1em!important;"> Remover Responsável</span></i>';
+    divExcluir.appendChild(spanExcluir);
+
+    formResponsavel.append(titulo, hr, CloneFormResponsavel,)
+}
+
+function excluirResponsavel(idenficador) {
+    if (confirm("Deseja excluir o Responsável?") == true) {
+        console.log(this)
+        const formResponsavel = document.querySelector('.form-responsavel-' + idenficador)
+        formResponsavel.remove()
+    } else {
+        alert('asdf2');
+    }
+}
+
+function setResponsavel2() {
 
     const divForm = document.querySelector('#responsavel');
     const inputsForm = divForm.getElementsByTagName("input")
