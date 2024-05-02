@@ -16,8 +16,6 @@ class ProfileController extends Controller
     {
         $use = new User();
         $uses = $use->all();
-        dd($uses);
-        die;
         return view('admin/usuario/index', ['users' => $use->all()]);
     }
 
@@ -26,9 +24,9 @@ class ProfileController extends Controller
      *
      * @return void
      */
-    public function create(Request $resquest)
+    public function create()
     {
-        return view('auth.register');
+        return view('admin/usuario/create');
     }
 
     /**
@@ -36,8 +34,11 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        dd($request);
+        $use = new User();
+        $uses = $use->find(20);
         return view('admin/usuario/create', [
-            'uses' => $request->user(),
+            'uses' => $uses,
         ]);
     }
 
@@ -46,8 +47,8 @@ class ProfileController extends Controller
      */
     public function update(Request $request): RedirectResponse
     {
-        $use = new User();
         dd($request);
+        $use = new User();
         // $aluno = i. $modal->where('id', $id)
         $request->user()->fill($request->validated());
 

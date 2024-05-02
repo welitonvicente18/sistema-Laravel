@@ -5,7 +5,14 @@
 }
 
 body {
-    background-color: rgb(243 244 246 / 1) !important;
+    background-color: #f3f4f6 !important;
+    font-family: 'Nunito', sans-serif;
+    color: #717c8a !important
+}
+
+a {
+    color: #717c8a !important;
+    text-decoration: none;
 }
 
 #app {
@@ -44,8 +51,8 @@ body {
 }
 
 #aside ul li:hover {
-    background-color: aliceblue;
-    border-right: #5cabf0;
+    background-color: #f7e6ca;
+    border-right: #EDA426;
     border-right-style: solid;
     border-right-width: 5px;
 }
@@ -66,8 +73,8 @@ body {
 
 .mycard {
     background-color: #FFF;
-    border-radius: 5px;
-    padding: 20px;
+    border-radius: 6px;
+    padding: 12px;
 }
 
 #logo {
@@ -113,8 +120,16 @@ body {
 }
 
 #navBar ul li:hover {
-    background-color: aliceblue;
-    border-bottom: #5cabf0;
+    border-bottom: #EDA426;
     border-bottom-style: solid;
     border-bottom-width: 5px;
+}
+
+
+.text-laranja {
+    color: #ED6226
+}
+
+.text-laranja-2 {
+    color: #EDA426
 }

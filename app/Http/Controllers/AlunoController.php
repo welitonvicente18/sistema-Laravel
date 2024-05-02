@@ -117,3 +117,5 @@ class AlunoController extends Controller
         return redirect()->route('aluno.index')->with('msg', 'Registro excluido com sucesso!');
     }
 }
+
+eu sou foda! 0)

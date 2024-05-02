@@ -3,7 +3,7 @@
 @section('section') Responsável/Aluno @endsection
 
 @section('button')
-<a class="btn btn-primary" href="{{ route('profile.create') }}"> <i class="bi bi-people-fill"></i> Novo Responsável/Aluno</a>
+<a class="btn btn-primary" href="{{ route('user.create') }}"> <i class="bi bi-people-fill"></i> Novo Responsável/Aluno</a>
 @endsection
 
 @section('content')
@@ -23,16 +23,18 @@
             <td class="text-center">{{$user->email}}</td>
             <td class="text-center"></td>
             <td class="justify-content-around d-flex text-center">
-                <a href="{{ route('profile.edit', $user->id) }}">
+
+                <a href="{{ route('user.edit', $user->id) }}">
                     <button type="submit" class="btn btn-sm btn-primary ">
                         <i class="bi bi-pencil-square fa-x"></i>
                         Editar
                     </button>
                 </a>
-                <form action="{{ route('profile.destroy', $user->id) }}" method="post">
+
+                <form action="{{ route('user.destroy', $user->id) }}" method="post">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-sm btn-danger">
+                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Deseja realmente excluir?')">
                         <i class="bi bi-x-square"></i>
                         Excluir
                     </button>

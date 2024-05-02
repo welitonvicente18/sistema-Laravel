@@ -2,7 +2,7 @@
 
     <ul>
         <li>
-            <a href="{{route('profile.edit')}}">
+            <a href="{{route('user.edit', Auth::user()->id)}}">
                 <i class="bi bi-person-fill"></i>{{ Auth::user()->name }}
             </a>
         </li>

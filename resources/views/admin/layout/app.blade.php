@@ -37,7 +37,7 @@
                 </div>
 
                 @if (session('msg'))
-                <div class="alert alert-success">
+                <div class="alert alert-success m-2">
                     {{ session('msg') }}
                 </div>
                 @endif
