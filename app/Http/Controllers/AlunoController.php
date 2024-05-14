@@ -37,19 +37,36 @@ class AlunoController extends Controller
     public function store(Request $request)
     {
         $aluno = new Aluno();
-        $aluno->nome = $request->nome;
-        $aluno->cpf = $request->cpf;
-        $aluno->dt_nascimento = $request->dt_nascimento;
-        $aluno->sexo = $request->sexo;
-        $aluno->matricula = $request->matricula;
-        $aluno->responsavel = $request->responsavel;
-        $aluno->turma = $request->turma;
-        $aluno->turno = $request->turno;
-        $aluno->telefone = $request->telefone;
-        $aluno->email = $request->email;
-        $aluno->save();
 
-        return redirect()->route('aluno.index');
+        $request->validate([
+            'id_responsavel' => 'required',
+            'nome' => 'required|max:250',
+            'cpf' => 'required',
+            'dt_nascimento' => 'required',
+            'sexo' => 'required|max:1',
+            'matricula' => 'required',
+            'turma' => 'required',
+            'turno' => 'required',
+            'parentesco' => 'required|max:50',
+            'email' => 'required|max:255|email',
+            'telefone' => 'required',
+        ]);
+
+        $aluno->create([
+            'id_responsavel' => $request->id_responsavel,
+            'nome' => $request->nome,
+            'cpf' => $request->cpf,
+            'dt_nascimento' => $request->dt_nascimento,
+            'sexo' => $request->sexo,
+            'matricula' => $request->matricula,
+            'turma' => $request->turma,
+            'turno' => $request->turno,
+            'parentesco' => $request->parentesco,
+            'email' => $request->email,
+            'telefone' => $request->telefone
+        ]);
+
+        return redirect()->route('aluno.index')->with('msg', 'Resgistro inserido');
     }
 
     /**
@@ -85,22 +102,35 @@ class AlunoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $modal = new Aluno();
-        $aluno = $modal->where('id', $id)->update(
-            [
-                'nome' => $request->nome,
-                'cpf' => $request->cpf,
-                'dt_nascimento' => $request->dt_nascimento,
-                'sexo' => $request->sexo,
-                'matricula' => $request->matricula,
-                'responsavel' => $request->responsavel,
-                'turma' => $request->turma,
-                'turno' => $request->turno,
-                'telefone' => $request->telefone,
-                'email' => $request->email
-            ]
-        );
-        return redirect()->route('aluno.index');
+        $aluno = Aluno::find($id);
+        $request->validate([
+            'id_responsavel' => 'required',
+            'nome' => 'required|max:250',
+            'cpf' => 'required',
+            'dt_nascimento' => 'required',
+            'sexo' => 'required|max:1',
+            'matricula' => 'required',
+            'turma' => 'required',
+            'turno' => 'required',
+            'parentesco' => 'required|max:50',
+            'email' => 'required|max:255|email',
+            'telefone' => 'required',
+        ]);
+
+        $aluno->id_responsavel = $request->id_responsavel;
+        $aluno->nome = $request->nome;
+        $aluno->cpf = $request->cpf;
+        $aluno->dt_nascimento = $request->dt_nascimento;
+        $aluno->sexo = $request->sexo;
+        $aluno->matricula = $request->matricula;
+        $aluno->turma = $request->turma;
+        $aluno->turno = $request->turno;
+        $aluno->parentesco = $request->parentesco;
+        $aluno->email = $request->email;
+        $aluno->telefone = $request->telefone;
+        $aluno->save();
+
+        return redirect()->route('aluno.index')->with('msg', 'Atualizado com sucesso!');
     }
 
     /**
@@ -117,5 +147,3 @@ class AlunoController extends Controller
         return redirect()->route('aluno.index')->with('msg', 'Registro excluido com sucesso!');
     }
 }
-
-eu sou foda! 0)

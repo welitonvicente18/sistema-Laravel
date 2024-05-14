@@ -8,13 +8,16 @@
              <a class="" href="{{route('dashboard')}}"> <i class="bi bi-grid-1x2-fill"></i> Dashboard</a>
          </li>
          <li class="">
-             <a class="" href="{{route('user.index')}}"><i class="bi bi-people-fill"></i> Responsável/Aluno</a>
+             <a class="" href="{{route('user.index')}}"><i class="bi bi-people-fill"></i> Responsável</a>
          </li>
          <li class="">
-             <a class="" href="{{route('aluno.index')}}">Alunos</a>
+             <a class="" href="{{route('aluno.index')}}"><i class="bi bi-person-hearts"></i> Aluno</a>
          </li>
          <li class="">
-             <a class=" disabled" href="{{ route('responsavel.index')}}">Responsável</a>
+             <a class="" href="{{ route('responsavel.index')}}"><i class="bi bi-people-fill"></i> Professor</a>
+         </li>
+         <li class="">
+             <a class="" href="{{ route('responsavel.index')}}"><i class="bi bi-diagram-3-fill"></i> Turma</a>
          </li>
      </ul>
  </aside>

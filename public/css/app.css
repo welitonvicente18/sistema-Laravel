@@ -47,12 +47,15 @@ a {
 #aside ul li {
     list-style: none;
     padding: 10px 10px 10px 15px;
-    margin-top: 10px;
+    margin-top: 20px;
+    font-weight: 700;
+    font-size: 1.1rem;
 }
 
 #aside ul li:hover {
     background-color: #f7e6ca;
     border-right: #EDA426;
+    color: #CC6613 !important;
     border-right-style: solid;
     border-right-width: 5px;
 }
@@ -120,16 +123,37 @@ a {
 }
 
 #navBar ul li:hover {
-    border-bottom: #EDA426;
+    border-bottom: #F1C058;
     border-bottom-style: solid;
     border-bottom-width: 5px;
 }
 
 
 .text-laranja {
-    color: #ED6226
+    color: #E78819 !important;
 }
 
 .text-laranja-2 {
-    color: #EDA426
+    color: #EDA426 !important;
+}
+
+.text-laranja-3 {
+    color: #CC6613 !important;
+}
+
+.btn-laranja {
+    background-color: #E78819 !important;
+    color: #FFF !important;
+}
+
+.btn-laranja:hover {
+    background-color: #CC6613 !important;
+}
+
+.btn-laranja:disabled {
+    background-color: #FBEDCA !important;
+}
+
+.btn-laranja:active {
+    background-color: #AA4713 !important;
 }

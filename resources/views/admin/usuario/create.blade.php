@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('section') <span class="fs-4 opacity-50"> Responsável/Aluno</span> / @if(isset($uses))<span class="text-laranja-2">Editar</span> {{$uses->name}} @else Novo @endif @endsection
+@section('section') <span class="fs-4 opacity-50"> Responsável</span> / @if(isset($uses))<span class="text-laranja">Editar</span> {{$uses->name}} @else Novo @endif @endsection
 
 @section('content')
 
@@ -25,12 +25,12 @@
                     <div class="row">
                         <div class="col-3 col-sm-6 col-lg-3">
                             <label for="">Parentesco</label>
-                            <select name="parentesco" class="form-select @error('parenteco') is-valid @enderror">
-                                <option value="" @if(isset($resp->parentesco) && $resp->parentesco =='' ) selected @endif>Escolha...</option>
-                                <option value="Pai" @if(isset($resp->parentesco) && $resp->parentesco =='Pai/Mãe' ) selected @endif>Pai/Mãe</option>
-                                <option value="Tio/Tia" @if(isset($resp->parentesco) && $resp->parentesco =='Tio/Tia' ) selected @endif>Tio/Tia</option>
-                                <option value="Avó/Avô" @if(isset($resp->parentesco) && $resp->parentesco =='Avô/Avó' ) selected @endif>Avô/Avó</option>
-                                <option value="Avó/Avô" @if(isset($resp->parentesco) && $resp->parentesco =='Primo/Prima' ) selected @endif>Primo/Prima</option>
+                            <select name="parentesco" class="form-select @error('parentesco') is-valid @enderror">
+                                <option value="" @if(isset($uses->parentesco) && $uses->parentesco =='' ) selected @endif>Escolha...</option>
+                                <option value="Pai" @if(isset($uses->parentesco) && $uses->parentesco =='Pai/Mãe' ) selected @endif>Pai/Mãe</option>
+                                <option value="Tio/Tia" @if(isset($uses->parentesco) && $uses->parentesco =='Tio/Tia' ) selected @endif>Tio/Tia</option>
+                                <option value="Avó/Avô" @if(isset($uses->parentesco) && $uses->parentesco =='Avô/Avó' ) selected @endif>Avô/Avó</option>
+                                <option value="Avó/Avô" @if(isset($uses->parentesco) && $uses->parentesco =='Primo/Prima' ) selected @endif>Primo/Prima</option>
                             </select>
                             @error('parentesco')
                             <span class="text-danger">{{ $message }}</span>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="col-3">
                             <label for="" class="form-label">CPF</label>
-                            <input type="text" name="cpf" value="{{$uses->cpf ?? ''}}" x-mask="999.999.999-99" placeholder="999.999.999-99" class="form-control @error('cpf') is-invalid @enderror" />
+                            <input type="text" name="cpf" value="{{$uses->cpf ?? ''}}" x-mask="99/99/9999" x-mask="999.999.999-99" max="11" placeholder="999.999.999-99" class="form-control @error('cpf') is-invalid @enderror" />
                             @error('cpf')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -89,76 +89,50 @@
                     <div class="row">
                         <div class="col-3 col-sm-6 col-lg-3">
                             <label for="">Estado</label>
-                            <input type="text" name="rua" value="{{$resp->rua ?? ''}}" class="form-control" />
+                            <input type="text" name="uf" value="{{$uses->uf ?? ''}}" class="form-control @error('uf') is-invalid @enderror" />
+                            @error('uf')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="col-3 col-sm-6 col-lg-3">
                             <label for="">Cidade</label>
-                            <input type="text" name="rua" value="{{$resp->rua ?? ''}}" class="form-control" />
+                            <input type="text" name="cidade" value="{{$uses->cidade ?? ''}}" class="form-control @error('cidade') is-invalid @enderror" />
+                            @error('cidade')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="col-3 col-sm-6 col-lg-3">
                             <label for="">CEP</label>
-                            <input type="text" name="cep" value="{{$resp->cep ?? ''}}" class="form-control" />
+                            <input type="text" name="cep" value="{{$uses->cep ?? ''}}" class="form-control @error('cep') is-invalid @enderror" />
+                            @error('cep')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="col-3 col-sm-6 col-lg-3">
                             <label for="">Rua</label>
-                            <input type="text" name="rua" value="{{$resp->rua ?? ''}}" class="form-control" />
+                            <input type="text" name="rua" value="{{$uses->rua ?? ''}}" class="form-control @error('rua') is-invalid @enderror" />
+                            @error('rua')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="col-3 col-sm-6 col-lg-3">
                             <label for="">Complemento</label>
-                            <input type="text" name="rua" value="{{$resp->rua ?? ''}}" class="form-control" />
+                            <input type="text" name="complemento" value="{{$uses->complemento ?? ''}}" class="form-control @error('complemento') is-invalid @enderror" />
+                            @error('complemento')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="col-3 col-sm-6 col-lg-3">
                             <label for="">Bairro</label>
-                            <input type="text" name="rua" value="{{$resp->rua ?? ''}}" class="form-control" />
+                            <input type="text" name="bairro" value="{{$uses->bairro ?? ''}}" class="form-control @error('bairro') is-invalid @enderror" />
+                            @error('bairro')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="col-3 col-sm-6 col-lg-3 text-start align-content-center mt-3" id="exluir">
                         </div>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-4 mt-4">
-                        <!-- <span type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalResponsavel"> -->
-                        <span type="button" class="btn btn-success" id="inserir">
-                            <i class="bi bi-person-plus-fill fa-2x"></i>
-                            Adicionar Novo Responsável
-                        </span>
-                    </div>
-                </div>
-
-                <hr class="my-3">
-
-                <div class="row">
-
-                    <div class="col-12">
-                        <h5 class="text-laranja">Adicionar Aluno</h5>
-                    </div>
-
-                    <div class="col-3 mt-3">
-                        <span type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalResponsavel">
-                            <i class="bi bi-person-plus-fill fa-2x"></i>
-                            Adicionar
-                        </span>
-
-                        <div class="modal fade" id="modalResponsavel" tabindex="-1" aria-labelledby="modalResponsavelLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-xl">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="modalResponsavelLabel">
-                                            <i class="bi bi-person-plus-fill fa-2x"></i>
-                                            Adicionar Aluno
-                                        </h4>
-                                        <span type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></span>
-                                    </div>
-                                    <div class="modal-body">
-                                        <!-- @include('admin.responsavel.form') -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <hr class="my-3">
 
                 <div class="col-12">
@@ -194,7 +168,7 @@
 
                 <div class="row mt-3">
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary">@if(isset($uses)) Atualizar @else Cadastrar @endif</button>
+                        <button type="submit" class="btn btn-laranja ">@if(isset($uses)) Atualizar @else Cadastrar @endif</button>
                     </div>
                 </div>
             </form>

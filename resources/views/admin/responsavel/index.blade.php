@@ -1,22 +1,18 @@
 @extends('admin.layout.app')
 
+@section('section') <span class="fs-4 opacity-50"> Responsável/Aluno</span> @endsection
+
 @section('content')
 
 <h1>Responsável</h1>
 
 <div class="container-fluid">
     <div class="col-12">
-        <a class="btn btn-primary" href="{{ route('responsavel.create') }}">Novo Responsável</a>
+        <a class="btn btn-laranaja" href="{{ route('responsavel.create') }}">Novo Responsável</a>
     </div>
 </div>
 
-@if (session('msg'))
-<div class="alert alert-success">
-    {{ session('msg') }}
-</div>
-@endif
-
-<table class="table table-light table-striped table-hover table-bordered table-sm table-responsive-sm mt-5">
+<table class="table table-light table-striped table-hover table-responsive mt-3">
     <thead>
         <tr>
             <th scope="col">Nome</th>
@@ -28,9 +24,7 @@
     <tbody>
         <tr>
             <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+            <td></td>6
     </tbody>
 </table>
 

@@ -6,6 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Aluno;
+use App\Models\Responsavel;
+use Faker\Guesser\Name;
 
 class UserController extends Controller
 {
@@ -40,30 +43,51 @@ class UserController extends Controller
     public function store(User $user, Request $request)
     {
         $user = new User();
-        $validated = $request->validate([
-            'email' => 'required|max:255',
-            'name' => 'required|max:255',
-            'cpf' => 'required|max:11',
-            'dt_nascimento' => 'required',
-            'sexo' => 'required|max:1',
-            'email' => 'required|max:255',
-            'telefone' => 'required|max:20',
-            'perfil' => 'required|max:1',
-            'password' => 'required|max:200',
-        ]);
+        $responsavel = new Responsavel();
 
-        $rest = $user->create([
-            'email' => $request->email,
-            'name' => $request->name,
-            'cpf' => $request->cpf,
-            'dt_nascimento' => $request->dt_nascimento,
-            'sexo' => $request->sexo,
-            'email' => $request->email,
-            'telefone' => $request->telefone,
-            'perfil' => $request->perfil,
-            'user' => $request->user,
-            'password' => Hash::make($request->password),
-        ]);
+        foreach ($request->all() as $req) {
+
+            var_dump($req);
+            die;
+
+            // $responsavel->validate([
+            //     'email' => 'required|max:255',
+            //     'name' => 'required|max:255',
+            //     'cpf' => 'required|max:11',
+            //     'dt_nascimento' => 'required',
+            //     'sexo' => 'required|max:1',
+            //     'email' => 'required|max:255',
+            //     'telefone' => 'required|max:20',
+            //     'perfil' => 'required|max:1',
+            //     'password' => 'required|max:200',
+            // ]);
+
+            $responsavel->create([
+                'parentesco' => $req->parentesco,
+                'name' => $req->name,
+                'cpf' => $req->cpf,
+                'rg' => $req->rg,
+                'dt_nascimento' => $req->dt_nascimento,
+                'sexo' => $req->sexo,
+                'telefone' => $req->telefone,
+                'rua' => $req->rua,
+                'cep' => $req->cep,
+                'complemento' => $req->complemento,
+                'bairro' => $req->bairro,
+                'email' => $req->email
+            ]);
+
+            $user->create([
+                'name' => $req->name,
+                'email' => $req->email,
+                'password' => $req->password,
+                'cpf' => $req->cpf,
+                'dt_nascimento' => $req->dt_nascimento,
+                'sexo' => $req->sexo,
+                'telefone' => $req->telefone,
+                'perfil' => $req->perfil,
+            ]);
+        }
 
         return Redirect::route('user.index')->with('msg', 'Criado com sucesso!');
     }
@@ -101,19 +125,49 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = User::find($id);
+        // dd($request);
         $validated = $request->validate([
+            'parentesco' => 'required|max:50',
+            'name' => 'required|max:255',
             'email' => 'required|max:255',
             'name' => 'required|max:255',
             'cpf' => 'required|max:11',
+            'rg' => 'required|max:50',
             'dt_nascimento' => 'required',
             'sexo' => 'required|max:1',
+            'rua' => 'required|max:50',
+            'cep' => 'required|max:20',
+            'complemento' => 'required|max:200',
+            'bairro' => 'required|max:200',
+            'uf' => 'required|max:50',
+            'cidade' => 'required|max:200',
             'email' => 'required|max:255',
             'telefone' => 'required|max:20',
             'perfil' => 'required|max:1',
+            'password' => 'required|max:200',
         ]);
 
-        $use = User::find($id);
-        $rest = $use->update($request->all());
+        $user->parentesco = $request->parentesco;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->name = $request->name;
+        $user->cpf = $request->cpf;
+        $user->rg = $request->rg;
+        $user->dt_nascimento = $request->dt_nascimento;
+        $user->sexo = $request->sexo;
+        $user->rua = $request->rua;
+        $user->cep = $request->cep;
+        $user->complemento = $request->complemento;
+        $user->bairro = $request->bairro;
+        $user->cidade = $request->cidade;
+        $user->email = $request->email;
+        $user->telefone = $request->telefone;
+        $user->perfil = $request->perfil;
+        $user->password = $request->password;
+
+        $user->save();
+
         return Redirect::route('user.index')->with(['sucess' => 'true', 'msg', 'Atualizado com sucesso!']);
     }
 
@@ -127,7 +181,7 @@ class UserController extends Controller
     {
         $use = User::find($id);
         $use->delete();
-        
+
         return Redirect::route('user.index')->with(['sucess' => 'true', 'msg', 'Excluido com sucesso!']);
     }
 }

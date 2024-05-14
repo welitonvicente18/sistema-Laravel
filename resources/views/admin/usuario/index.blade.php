@@ -1,13 +1,13 @@
 @extends('admin.layout.app')
 
-@section('section') Responsável/Aluno @endsection
+@section('section') <span class="fs-4 opacity-50"> Responsável</span> @endsection
 
 @section('button')
-<a class="btn btn-primary" href="{{ route('user.create') }}"> <i class="bi bi-people-fill"></i> Novo Responsável/Aluno</a>
+<a class="btn btn-laranja" href="{{ route('user.create') }}"> <i class="bi bi-people-fill"></i> Novo Responsável</a>
 @endsection
 
 @section('content')
-<table class="table table-light table-striped table-hover table-bordered table-responsive mt-3">
+<table class="table table-light table-striped table-hover table-responsive mt-3">
     <thead>
         <tr>
             <th scope="col" class="col-">Nome</th>
@@ -25,7 +25,7 @@
             <td class="justify-content-around d-flex text-center">
 
                 <a href="{{ route('user.edit', $user->id) }}">
-                    <button type="submit" class="btn btn-sm btn-primary ">
+                    <button type="submit" class="btn btn-sm btn-laranja ">
                         <i class="bi bi-pencil-square fa-x"></i>
                         Editar
                     </button>
